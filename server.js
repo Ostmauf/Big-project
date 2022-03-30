@@ -9,9 +9,11 @@ const indexRouter = require("./controller/index");
 server.set("view engine", "ejs");
 server.set("layout", "layouts/layout")
 server.use(expressLayout);
-//server.use(cookieParser);
+server.use(cookieParser());
 server.use(express.static("public"));
 server.use("/", indexRouter);
+server.use(express.urlencoded({extended:true}));
+server.use(express.json());
 
 server.listen(process.env.PORT, (err) => {
     if (err) throw err;
