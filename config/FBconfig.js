@@ -1,12 +1,14 @@
+const { database } = require("firebase-admin");
 const admin = require("firebase-admin");
 
 const serviceAccount = require("./admin.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://big-project-73143-default-rtdb.europe-west1.firebasedatabase.app/"
 });
 
 const auth = admin.auth();
-//const db = admin.database();
+const db = admin.database();
 
-module.exports = {auth/*, db*/}
+module.exports = {auth, db}
